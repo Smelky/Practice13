@@ -1,0 +1,8 @@
+CREATE TABLE developer_project
+(
+    developer_id integer NOT NULL,
+    project_id integer  NOT NULL,
+    PRIMARY KEY (developer_id , project_id),
+    FOREIGN KEY (developer_id) REFERENCES developers(id),
+    FOREIGN KEY (project_id) REFERENCES projects(id),
+);
