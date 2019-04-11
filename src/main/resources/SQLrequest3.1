@@ -1,4 +1,4 @@
-SELECT sum(developers.salary) FROM developer_projects
-INNER JOIN developers ON developer_projects.Developers_id = developers.id
-INNER JOIN projects ON developer_projects.Projects_id = projects.id
-WHERE (projects.name = "secondproject")
+SELECT sum(practice13.developers.salary) FROM practice13.developer_projects
+INNER JOIN practice13.developers ON practice13.developer_projects.Developers_id = practice13.developers.id
+INNER JOIN practice13.projects ON practice13.developer_projects.Projects_id = practice13.projects.id
+WHERE (practice13.projects.name = "secondproject")

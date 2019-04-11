@@ -1,4 +1,4 @@
-SELECT developers.name FROM developer_skills
-INNER JOIN developers ON developer_skills.developer_id = developers.id
-INNER JOIN skills ON developer_skills.skills_id = skills.id
-WHERE (skills.level = "middle")
+SELECT practice13.developers.name FROM practice13.developer_skills
+INNER JOIN practice13.developers ON practice13.developer_skills.developer_id = practice13.developers.id
+INNER JOIN practice13.skills ON practice13.developer_skills.skills_id = practice13.skills.id
+WHERE (practice13.skills.level = "middle")
