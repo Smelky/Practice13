@@ -1,0 +1,4 @@
+SELECT avg(developers.salary) FROM developer_projects
+INNER JOIN developers ON developer_projects.Developers_id = developers.id
+INNER JOIN projects ON developer_projects.Projects_id = projects.id
+HAVING (min(projects.cost))
