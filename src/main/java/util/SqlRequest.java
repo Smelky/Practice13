@@ -3,8 +3,8 @@ package util;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 
 public class SqlRequest {
     private static final Logger LOGGER = Logger.getLogger(SqlRequest.class);
@@ -12,13 +12,13 @@ public class SqlRequest {
     public static void request(String request) {
         Connection connection = JdbcConnector.getConnection();
         assert connection != null;
-        try (Statement statement = connection.createStatement();
+        try (PreparedStatement statement = connection.prepareStatement(request);
              ResultSet resultSet = statement.executeQuery(request)) {
             while (resultSet.next()) {
                 LOGGER.info(resultSet.getString(1));
             }
         } catch (Exception e) {
-            LOGGER.info(e.getMessage());
+            LOGGER.error(e.getMessage());
         }
     }
 
@@ -26,7 +26,7 @@ public class SqlRequest {
         StringBuilder stringBuilder = new StringBuilder();
         Connection connection = JdbcConnector.getConnection();
         assert connection != null;
-        try (Statement statement = connection.createStatement();
+        try (PreparedStatement statement = connection.prepareStatement(request);
              ResultSet resultSet = statement.executeQuery(request)) {
             while (resultSet.next()) {
                 stringBuilder.append(resultSet.getString(1));
@@ -38,7 +38,7 @@ public class SqlRequest {
                 stringBuilder.setLength(0);
             }
         } catch (Exception e) {
-            LOGGER.info(e.getMessage());
+            LOGGER.error(e.getMessage());
         }
     }
 }
